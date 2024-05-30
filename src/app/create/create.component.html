@@ -1,0 +1,27 @@
+<!-- create.component.html -->
+
+<form (ngSubmit)="onSubmit()">
+    <label for="type">Tipo:</label>
+    <select id="type" name="type" [(ngModel)]="formData.type" required>
+      <option value="movie">Película</option>
+      <option value="series">Serie</option>
+    </select>
+  
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title" [(ngModel)]="formData.title" required>
+  
+    <label for="posterUrl">URL del Póster:</label>
+    <input type="url" id="posterUrl" name="posterUrl" [(ngModel)]="formData.poster_url" required>
+  
+    <label for="trailerUrl">URL del Trailer:</label>
+    <input type="url" id="trailerUrl" name="trailerUrl" [(ngModel)]="formData.trailer_url" required>
+  
+    <label *ngIf="formData.type === 'movie'" for="duration">Duración (minutos):</label>
+    <input *ngIf="formData.type === 'movie'" type="number" id="duration" name="duration" [(ngModel)]="formData.duration_minutes">
+  
+    <label *ngIf="formData.type === 'series'" for="numEpisodes">Número de Episodios:</label>
+    <input *ngIf="formData.type === 'series'" type="number" id="numEpisodes" name="numEpisodes" [(ngModel)]="formData.num_episodes">
+  
+    <button type="submit">Crear Contenido</button>
+  </form>
+  
